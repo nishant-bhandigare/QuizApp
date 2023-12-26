@@ -12,9 +12,11 @@ class StartScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text("StartScreen"),
-          ElevatedButton(onPressed: (){
-            startQuiz();
-          }, child: const Text("Start Quiz")),
+          ElevatedButton(
+              onPressed: () {
+                startQuiz();
+              },
+              child: const Text("Start Quiz")),
         ],
       ),
     );

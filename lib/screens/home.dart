@@ -13,6 +13,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List<String> selectedAnswers = [];
+
   var activeScreen = 'start-screen';
 
   void startQuiz() {
@@ -44,10 +45,13 @@ class _HomeState extends State<Home> {
       screenWidget = QuestionsScreen(chooseAnswer: chooseAnswer);
     }
     if (activeScreen == 'results-screen') {
-      screenWidget = ResultsScreen(restartQuiz: restartQuiz,);
+      screenWidget = ResultsScreen(restartQuiz: restartQuiz, selectedAnswers: selectedAnswers);
     }
     return Scaffold(
-      body: screenWidget,
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: screenWidget,
+      ),
     );
   }
 }
