@@ -21,7 +21,7 @@ final ThemeData darkTheme = ThemeData.dark().copyWith(
 
 void main(){
   runApp(MaterialApp(
-    // theme: darkTheme,
+    theme: darkTheme,
     home: Home(),
   ));
 }

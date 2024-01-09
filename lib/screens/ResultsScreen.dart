@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:quizapp/data/questions.dart';
 import 'package:quizapp/widgets/QuestionsSummary.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
@@ -53,8 +54,19 @@ class ResultsScreen extends StatelessWidget {
           width: 100,
           height: 100,
           child: SfRadialGauge(
-            enableLoadingAnimation: true,
+            enableLoadingAnimation: false,
             axes: <RadialAxis>[
+              RadialAxis(
+                startAngle: -90,
+                endAngle: 270,
+                showLabels: false,
+                showTicks: false,
+                axisLineStyle: const AxisLineStyle(
+                  color: Colors.white,
+                  thickness: 10,
+                  cornerStyle: CornerStyle.bothCurve,
+                ),
+              ),
               RadialAxis(
                 startAngle: -90,
                 endAngle: (partition*result())-90,
@@ -71,6 +83,7 @@ class ResultsScreen extends StatelessWidget {
                     positionFactor: 0.15,
                     widget: Text(
                       result().toString(),
+                      style: GoogleFonts.getFont('Play', fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                   )
                 ],
@@ -84,11 +97,7 @@ class ResultsScreen extends StatelessWidget {
         Text(
           'You answered $numCorrectQuestions out of $numTotalQuestions questions correctly!',
           textAlign: TextAlign.center,
-          style: const TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
+          style: GoogleFonts.getFont('Play', fontSize: 18, fontWeight: FontWeight.bold),
         ),
         const SizedBox(
           height: 30,
@@ -97,11 +106,31 @@ class ResultsScreen extends StatelessWidget {
         const SizedBox(
           height: 30,
         ),
-        ElevatedButton(
-            onPressed: () {
-              restartQuiz();
-            },
-            child: const Text("Restart Quiz")),
+        GestureDetector(
+          onTap: () {
+            restartQuiz();
+          },
+          child: Container(
+            padding: const EdgeInsets.all(20),
+            margin: const EdgeInsets.symmetric(horizontal: 25),
+            decoration: BoxDecoration(
+              // color: const Color.fromRGBO(156, 98, 255, 1.0),
+              borderRadius: BorderRadius.circular(20),
+              gradient: const LinearGradient(
+                colors: [
+                  Color.fromRGBO(98, 161, 255, 1.0),
+                  Color.fromRGBO(156, 98, 255, 1),
+                ],
+              ),
+            ),
+            child: Center(
+              child: Text(
+                "Restart Quiz",
+                style: GoogleFonts.getFont('Play', fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }

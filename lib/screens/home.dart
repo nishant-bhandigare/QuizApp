@@ -48,8 +48,9 @@ class _HomeState extends State<Home> {
       screenWidget = ResultsScreen(restartQuiz: restartQuiz, selectedAnswers: selectedAnswers);
     }
     return Scaffold(
+      // backgroundColor: Colors.black54,
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(14.0),
         child: screenWidget,
       ),
     );

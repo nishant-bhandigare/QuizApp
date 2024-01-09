@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class QuestionsSummary extends StatelessWidget {
   const QuestionsSummary(this.summaryData, {Key? key}) : super(key: key);
@@ -35,10 +36,13 @@ class QuestionsSummary extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildText(data['question'] as String, 15, FontWeight.bold),
-              const SizedBox(height: 5),
-              _buildText(data['user_answer'] as String, null, null, Colors.lightBlueAccent),
-              _buildText(data['correct_answer'] as String, null, null, Colors.amber),
-              const SizedBox(height:35),
+              const SizedBox(height: 10),
+              _buildText(data['user_answer'] as String, null, null, const Color.fromRGBO(
+                  148, 90, 255, 1.0),),
+              const SizedBox(height: 10),
+              _buildText(data['correct_answer'] as String, null, null, const Color.fromRGBO(
+                  36, 180, 255, 1.0),),
+              const SizedBox(height:30),
             ],
           ),
         ),
@@ -51,15 +55,13 @@ class QuestionsSummary extends StatelessWidget {
       width: 28,
       height: 28,
       decoration: BoxDecoration(
-        color: Colors.purpleAccent,
+        color: const Color.fromRGBO(195, 161, 255, 1.0),
         borderRadius: BorderRadius.circular(100),
       ),
       child: Center(
         child: Text(
           ((questionIndex ?? 0) + 1).toString(),
-          style: const TextStyle(
-            fontSize: 15,
-          ),
+          style: GoogleFonts.getFont('Play', fontSize: 15),
         ),
       ),
     );
@@ -68,11 +70,7 @@ class QuestionsSummary extends StatelessWidget {
   Widget _buildText(String text, double? fontSize, FontWeight? fontWeight, [Color? color]) {
     return Text(
       text,
-      style: TextStyle(
-        fontSize: fontSize,
-        fontWeight: fontWeight,
-        color: color,
-      ),
+      style: GoogleFonts.getFont('Play',color: color, fontWeight: fontWeight, fontSize: fontSize),
     );
   }
 }
